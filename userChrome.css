@@ -3,43 +3,44 @@
     display: none !important;
 }
 
-/*
+/* Maximum size of URL input bar. */
 #urlbar-container {
     min-width: 720px;
     max-width: 1440px;
 }
-*/
+
+/* Center elements because after setting a maximum size they are left-aligned. */
+#nav-bar-customization-target {
+    justify-content: center;
+}
+
+#navigator-toolbox {
+    --navbar-margin: -37px;
+    margin-top: var(--navbar-margin);
+    z-index: 100 !important;
+    background-color: var(--toolbox-bgcolor-inactive) !important;
+}
 
 #nav-bar {
-    --navbar-margin: -37px;
-
-    margin-top: var(--navbar-margin);
-    margin-bottom: 0;
-    z-index: -100;
-
+    position: fixed;
+    top: 0px;
     transition: all 400ms !important;
     transition-delay: 150ms !important;
-
-    opacity: 0;
+    /* background-color: var(--toolbox-bgcolor-inactive) !important; */
 }
 
 #navigator-toolbox:focus-within>#nav-bar,
 #navigator-toolbox:hover>#nav-bar {
-    margin-top: 0;
-    margin-bottom: var(--navbar-margin);
-    z-index: 100;
-
+    top: 35px;
     transition: all 200ms !important;
-
-    opacity: 1;
 }
 
-/*
-#navigator-toolbox {
-    --toolbar-bgcolor: transparent;
+/* Hide bookmarks button. */
+#star-button-box {
+    display: none; 
 }
-*/
 
+/* Center URL input bar text. */
 #urlbar {
     text-align: center;
 }
@@ -76,7 +77,7 @@
 #appMenu-more-button,
 
 /* Hide search engine icon */
-/* browser.urlbar.scotchBonnet.enableOverride=false in `about:config` */
+/* Also set `browser.urlbar.scotchBonnet.enableOverride=false` in `about:config` */
 /*
 #urlbar-searchmode-switcher {
     display: none !important;
@@ -167,15 +168,22 @@
     -moz-box-pack: start !important;
 }
 
-#sidebar-header,
+#sidebar-box {
+    overflow: visible !important;
+    z-index: 100;
+}
+
 #sidebar {
     transition: min-width 115ms linear var(--uc-autohide-sidebar-delay) !important;
     min-width: var(--uc-sidebar-width) !important;
     will-change: min-width;
 }
 
-#sidebar-box:hover,
-#sidebar-box:focus-within {
+#sidebar-box:hover > #sidebar,
+#sidebar-box:focus-within > #sidebar {
     min-width: var(--uc-sidebar-hover-width) !important;
-    transition-delay: 200ms !important;
+    will-change: min-width !important;
+    transition-delay: 0ms !important;
 }
+
+

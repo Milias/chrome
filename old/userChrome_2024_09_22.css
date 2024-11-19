@@ -1,0 +1,144 @@
+#back-button,
+#forward-button {
+    display: none !important;
+}
+
+/* Move hamburger menu to the left */
+#PanelUI-button,
+#customization-panel-container,
+#customization-panelWrapper .panel-arrow {
+    -moz-box-ordinal-group: 0 !important;
+    margin-right: -6px !important;
+}
+
+#nav-bar {
+    /* customize this value. */
+    --navbar-margin: -31px;
+
+    margin-top: var(--navbar-margin);
+    margin-bottom: 0;
+    z-index: -100;
+
+    transition: all 400ms !important;
+    transition-delay: 150ms !important;
+
+    opacity: 0;
+}
+
+#navigator-toolbox:focus-within>#nav-bar,
+#navigator-toolbox:hover>#nav-bar {
+    margin-top: 0;
+    margin-bottom: var(--navbar-margin);
+    z-index: 100;
+
+    transition: all 200ms !important;
+
+    opacity: 1;
+}
+
+#navigator-toolbox {
+    --toolbar-bgcolor: transparent;
+}
+
+#urlbar {
+    text-align: center;
+}
+
+#urlbar-container {
+    min-width: 720px;
+    max-width: 1440px;
+}
+
+toolbarpaletteitem[place="toolbar"][id^="wrapper-customizableui-special-spring"],
+toolbarspring {
+    max-width: none !important;
+}
+
+/* Hide horizontal tabs at the top of the window */
+#tabbrowser-tabs {
+    visibility: collapse !important;
+}
+
+
+/* Hide various elements */
+/* Menu */
+#appMenu-fxa-container,
+/* Sign in to Sync */
+#appMenu-fxa-container+toolbarseparator,
+/* #appMenuRestoreLastSession, */
+#appMenu-zoom-controls,
+#appMenu-zoom-controls+toolbarseparator,
+#appMenu-edit-controls,
+#appMenu-edit-controls+toolbarseparator,
+#appMenu-library-button,
+#appMenu-customize-button,
+#appMenu-customize-button+toolbarseparator,
+#appMenu-open-file-button,
+#appMenu-save-file-button,
+#appMenu-find-button,
+#appMenu-more-button,
+
+/* URL Bar */
+#pageActionButton,
+#pocket-button-box,
+#bar-button,
+.autocomplete-history-dropmarker,
+#identity-icon-labels {
+    display: none !important;
+}
+
+#sidebar-box+#sidebar-splitter {
+    display: none !important;
+}
+
+#sidebar-box #sidebar-header {
+    visibility: collapse;
+}
+
+#sidebar-box {
+    min-width: var(--thin-tab-width) !important;
+    max-width: var(--thin-tab-width) !important;
+}
+
+
+/* Shrink sidebar until hovered, when using Tree Style Tab. */
+:root {
+    --thin-tab-width: 36px;
+    --wide-tab-width: 300px;
+    --theme-colors-frame: rgb(43, 42, 51);
+}
+
+#sidebar {
+    position: relative;
+    transition: all 250ms;
+    transition-delay: 0.3s;
+    min-width: var(--thin-tab-width) !important;
+    max-width: var(--thin-tab-width) !important;
+    margin-right: 0px;
+    z-index: 1;
+}
+
+#sidebar:hover {
+    transition: all 100ms;
+    transition-delay: 0.6s;
+    min-width: var(--wide-tab-width) !important;
+    max-width: var(--wide-tab-width) !important;
+    margin-right: calc((var(--wide-tab-width) - var(--thin-tab-width)) * -1);
+    z-index: 1;
+}
+
+#aHTMLTooltip,
+#remoteBrowserTooltip {
+    display: none !important
+}
+
+#main-window[inFullscreen] #sidebar-box,
+#main-window[inFullscreen] #sidebar-splitter,
+#main-window[inFullscreen] #sidebar {
+    display: none !important;
+}
+
+/* List-all-tabs button */
+#alltabs-button {
+    display: none !important;
+}

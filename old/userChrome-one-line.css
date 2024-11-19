@@ -1,0 +1,235 @@
+/*@namespace url("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul");*/
+/*@import "ShadowFox/userChrome_imports.css";*/
+
+/*
+Original layout by /u/Herkt https://www.reddit.com/r/FirefoxCSS/comments/7eazix/my_attempt_at_a_oneline_interface/
+Use with compact density
+*/
+
+/*
+#content browser {
+  margin-right: -14px !important;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+*/
+
+/*
+:root:-moz-lwtheme-brighttext {
+  --color-overflow: #222;
+  --chrome-background-color: #111 !important;
+  --chrome-secondary-background-color: #222 !important;
+  --chrome-color: #ccc !important;
+  background-color: #444 !important;
+}
+*/
+
+/* :root:-moz-lwtheme-darktext {
+  --color-overflow: #ddd;
+  --chrome-background-color: #ccc !important;
+} */
+
+:root {
+    --tabs-border: transparent !important;
+    --toolbox-border-bottom-color: transparent !important;
+    --chrome-nav-bar-controls-border-color: transparent !important;
+}
+
+/* Move Tab-bar beside Nav-bar */
+#TabsToolbar {
+    margin-bottom: 0px !important;
+    /* not needed anymore? */
+    margin-top: 0px !important;
+    /*  */
+    margin-left: 35vw !important;
+    margin-right: 0px !important;
+    max-height: 32px !important;
+}
+
+#nav-bar {
+    margin-bottom: -1px !important;
+    /* remove navbar bottom 1px border */
+    margin-top: -32px !important;
+    margin-right: 65vw !important;
+    border-top: none !important;
+}
+
+/* Remove padding above tabbar in compact mode */
+#main-window[sizemode="normal"]>#titlebar {
+    -moz-appearance: initial !important;
+}
+
+
+/* Back & Forward buttons */
+#back-button>.toolbarbutton-icon,
+#forward-button>.toolbarbutton-icon {
+    transform: scale(0.1, 0.1) !important;
+    margin-left: -2px !important;
+    margin-right: -2px !important;
+    display: none !important;
+}
+
+#back-button,
+#forward-button {
+    display: none !important;
+}
+
+/* Move hamburger menu to the left */
+#PanelUI-button,
+#customization-panel-container,
+#customization-panelWrapper .panel-arrow {
+    -moz-box-ordinal-group: 0 !important;
+    margin-right: -6px !important;
+}
+
+/*
+#appMenu-popup {
+  margin-right: -258px !important;
+}
+
+#appMenu-popup .panel-arrow {
+  margin-right: 248px !important;
+}
+*/
+
+/* More tools... button */
+#nav-bar-overflow-button {
+    transform: scale(0.9, 0.9) !important;
+    fill: var(--color-overflow) !important;
+}
+
+
+/* Tabs */
+.tabbrowser-tab {
+    height: 32px !important;
+}
+
+.tabbrowser-tab[fadein]:not([pinned]) {
+    min-width: 0px !important;
+}
+
+/* Remove empty space before first tab
+Delete this rule if you need a space to drag the window*/
+#TabsToolbar .titlebar-placeholder[type="pre-tabs"] {
+    display: none !important;
+}
+
+/* Remove border between tabs
+Delete this rule if you want separators between background tabs */
+.tabbrowser-tab::after,
+.tabbrowser-tab::before {
+    border-left: none !important;
+}
+
+/* Border between background tabs */
+.tabbrowser-tab::after,
+.tabbrowser-tab::before {
+    color: grey !important;
+    opacity: .2 !important;
+}
+
+/* New tab button color */
+#new-tab-button,
+.tabs-newtab-button {
+    fill: var(--chrome-color) !important;
+}
+
+/* tab line - adjust color & size, default #0a84ff 2px */
+.tab-line {
+    background-color: #0a84ff !important;
+    height: 0px !important;
+}
+
+/* Hide horizontal tabs at the top of the window */
+#tabbrowser-tabs {
+    visibility: collapse !important;
+}
+
+
+/* Hide various elements */
+/* Menu */
+#appMenu-fxa-container,
+/* Sign in to Sync */
+#appMenu-fxa-container+toolbarseparator,
+/* #appMenuRestoreLastSession, */
+#appMenu-zoom-controls,
+#appMenu-zoom-controls+toolbarseparator,
+#appMenu-edit-controls,
+#appMenu-edit-controls+toolbarseparator,
+#appMenu-library-button,
+#appMenu-customize-button,
+#appMenu-customize-button+toolbarseparator,
+#appMenu-open-file-button,
+#appMenu-save-file-button,
+#appMenu-find-button,
+#appMenu-more-button,
+
+/* URL Bar */
+#pageActionButton,
+#pocket-button-box,
+#bar-button,
+.autocomplete-history-dropmarker,
+#identity-icon-labels {
+    display: none !important;
+}
+
+/* Sidebar min and max width removal */
+#sidebar {
+    max-width: none !important;
+    min-width: 0px !important;
+}
+
+/* Hide splitter, when using Tree Style Tab. */
+#sidebar-box[sidebarcommand="treestyletab_piro_sakura_ne_jp-sidebar-action"]+#sidebar-splitter {
+    display: none !important;
+}
+
+/* Hide sidebar header, when using Tree Style Tab. */
+#sidebar-box[sidebarcommand="treestyletab_piro_sakura_ne_jp-sidebar-action"] #sidebar-header {
+    visibility: collapse;
+}
+
+/* Shrink sidebar until hovered, when using Tree Style Tab. */
+:root {
+    --thin-tab-width: 30px;
+    --wide-tab-width: 300px;
+}
+
+#sidebar-box:not([sidebarcommand="treestyletab_piro_sakura_ne_jp-sidebar-action"]) {
+    min-width: var(--wide-tab-width) !important;
+    max-width: none !important;
+}
+
+#sidebar-box[sidebarcommand="treestyletab_piro_sakura_ne_jp-sidebar-action"] {
+    position: relative !important;
+    transition: all 100ms !important;
+    min-width: var(--thin-tab-width) !important;
+    max-width: var(--thin-tab-width) !important;
+}
+
+#sidebar-box[sidebarcommand="treestyletab_piro_sakura_ne_jp-sidebar-action"]:hover {
+    transition: all 100ms !important;
+    transition-delay: 0.6s !important;
+    min-width: var(--wide-tab-width) !important;
+    max-width: var(--wide-tab-width) !important;
+    margin-right: calc((var(--wide-tab-width) - var(--thin-tab-width)) * -1) !important;
+    z-index: 1;
+}
+
+#aHTMLTooltip,
+#remoteBrowserTooltip {
+    display: none !important
+}
+
+#main-window[inFullscreen] #sidebar-box,
+#main-window[inFullscreen] #sidebar-splitter,
+#main-window[inFullscreen] #sidebar {
+    display: none !important;
+    width: 0px !important;
+}
+
+/* List-all-tabs button */
+#alltabs-button {
+    display: none !important;
+}
+

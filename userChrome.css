@@ -1,0 +1,181 @@
+#back-button,
+#forward-button {
+    display: none !important;
+}
+
+/*
+#urlbar-container {
+    min-width: 720px;
+    max-width: 1440px;
+}
+*/
+
+#nav-bar {
+    --navbar-margin: -37px;
+
+    margin-top: var(--navbar-margin);
+    margin-bottom: 0;
+    z-index: -100;
+
+    transition: all 400ms !important;
+    transition-delay: 150ms !important;
+
+    opacity: 0;
+}
+
+#navigator-toolbox:focus-within>#nav-bar,
+#navigator-toolbox:hover>#nav-bar {
+    margin-top: 0;
+    margin-bottom: var(--navbar-margin);
+    z-index: 100;
+
+    transition: all 200ms !important;
+
+    opacity: 1;
+}
+
+/*
+#navigator-toolbox {
+    --toolbar-bgcolor: transparent;
+}
+*/
+
+#urlbar {
+    text-align: center;
+}
+
+/*
+ * Hide horizontal tabs at the top of the window
+ * https://github.com/piroor/treestyletab/wiki/Code-snippets-for-custom-style-rules#hide-horizontal-tabs-at-the-top-of-the-window-1349-1672-2147
+ */
+#main-window[tabsintitlebar="true"]:not([extradragspace="true"]) #TabsToolbar>.toolbar-items {
+    opacity: 0;
+    pointer-events: none;
+}
+
+#main-window:not([tabsintitlebar="true"]) #TabsToolbar {
+    visibility: collapse !important;
+}
+
+/* Hide various elements */
+/* Menu */
+#appMenu-fxa-container,
+/* Sign in to Sync */
+#appMenu-fxa-container+toolbarseparator,
+/* #appMenuRestoreLastSession, */
+#appMenu-zoom-controls,
+#appMenu-zoom-controls+toolbarseparator,
+#appMenu-edit-controls,
+#appMenu-edit-controls+toolbarseparator,
+#appMenu-library-button,
+#appMenu-customize-button,
+#appMenu-customize-button+toolbarseparator,
+#appMenu-open-file-button,
+#appMenu-save-file-button,
+#appMenu-find-button,
+#appMenu-more-button,
+
+/* Hide search engine icon */
+/* browser.urlbar.scotchBonnet.enableOverride=false in `about:config` */
+/*
+#urlbar-searchmode-switcher {
+    display: none !important;
+}
+*/
+
+/* URL Bar */
+#pageActionButton,
+#pocket-button-box,
+#bar-button,
+.autocomplete-history-dropmarker,
+#identity-icon-labels {
+    display: none !important;
+}
+
+/* List-all-tabs button */
+#alltabs-button {
+    display: none !important;
+}
+
+#sidebar-header {
+    display: none !important;
+}
+
+#aHTMLTooltip,
+#remoteBrowserTooltip {
+    display: none !important
+}
+
+/*   Dynamic sidebar   */
+[titlepreface*="."] #sidebar-header {
+    visibility: collapse !important;
+}
+
+[titlepreface*="."] #titlebar {
+    visibility: collapse;
+}
+
+#sidebar-box {
+    --uc-sidebar-width: 33px;
+    --uc-sidebar-hover-width: 300px;
+    --uc-autohide-sidebar-delay: 90ms;
+    position: relative;
+    min-width: var(--uc-sidebar-width) !important;
+    width: var(--uc-sidebar-width) !important;
+    max-width: var(--uc-sidebar-width) !important;
+    z-index: 1;
+}
+
+#sidebar-box[positionend] {
+    direction: rtl
+}
+
+#sidebar-box[positionend]>* {
+    direction: ltr
+}
+
+#sidebar-box[positionend]:-moz-locale-dir(rtl) {
+    direction: ltr
+}
+
+#sidebar-box[positionend]:-moz-locale-dir(rtl)>* {
+    direction: rtl
+}
+
+#main-window[sizemode="fullscreen"] #sidebar-box {
+    --uc-sidebar-width: 1px;
+}
+
+#sidebar-splitter {
+    display: none !important;
+}
+
+#sidebar-header {
+    overflow: hidden;
+    color: var(--chrome-color, inherit) !important;
+    padding-inline: 0 !important;
+}
+
+#sidebar-header::before,
+#sidebar-header::after {
+    content: "";
+    display: -moz-box;
+    padding-left: 8px;
+}
+
+#sidebar-switcher-target {
+    -moz-box-pack: start !important;
+}
+
+#sidebar-header,
+#sidebar {
+    transition: min-width 115ms linear var(--uc-autohide-sidebar-delay) !important;
+    min-width: var(--uc-sidebar-width) !important;
+    will-change: min-width;
+}
+
+#sidebar-box:hover,
+#sidebar-box:focus-within {
+    min-width: var(--uc-sidebar-hover-width) !important;
+    transition-delay: 200ms !important;
+}

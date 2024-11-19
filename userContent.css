@@ -1,0 +1,12 @@
+#downloads-indicator-counter {
+    color: white;
+}
+
+@-moz-document regexp("moz-extension://.+/sidebar/sidebar.html.*") {
+
+    :root,
+    #background {
+        background-color: rgb(43, 42, 51);
+    }
+}
+
